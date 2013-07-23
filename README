@@ -1,0 +1,107 @@
+This package creates a python module called sciscipy.
+
+It provides a link between python and Scilab by defining 3 functions:
+
+- sciscipy.eval(sci_cmd)
+- sciscipy.read(sci_var_name)
+- sciscipy.write(sci_var_name, py_var_name)
+
+To increase the level of enjoyment, a python module
+called scilab is also provided. This package contains a
+class 'Scilab' that can be used to issue any valid Scilab
+command. Use it as follows:
+
+>>> from scilab import Scilab
+>>> sci = Scilab()
+>>> (any_output, ...) = sci.any_func(param1, ...)
+
+INSTALL
+========
+
+LINUX
+
+$ ./setup.py build
+$ sudo ./setup.py install
+
+Debian/Ubuntu
+
+$ ./setup.py build
+$ sudo ./setup.py install --install-layout=deb
+
+$ ./setup
+
+WINDOWS
+
+c:\Python26\python.exe setup.py build --compiler=mingw32
+c:\Python26\python.exe setup.py build install
+
+
+To build with an other compiler (ex: clang)
+$ CC=clang python setup.py build
+
+
+To clean the build:
+
+setup.py clean --all
+
+
+RUN
+===
+
+LINUX
+-----
+
+the LD_LIBRARY_PATH environment variable must be set, for instance to
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/jvm/default-java/jre/lib/amd64/:/usr/lib/jvm/default-java//jre/lib/amd64/server/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/jvm/default-java/jre/lib/amd64/native_threads/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/scilab
+export SCI=/usr/share/scilab
+
+See http://help.scilab.org/docs/current/en_US/compile_and_run_call_scilab.html
+
+
+Ubuntu
+------
+
+It is not possible to set LD_LIBRARY_PATH 
+globally so you have to create a file sciscipy.conf in 
+/etc/ld.so.conf.d:
+
+$ cat /etc/ld.so.conf.d/sciscipy.conf 
+/usr/lib/scilab
+/usr/lib/jvm/default-java/jre/lib/i386/native_threads/
+/usr/lib/jvm/default-java/jre/lib/i386/
+/usr/lib/jvm/default-java/jre/lib/i386/server/
+
+You also have to define the SCI environment variable in
+/etc/environment :
+
+$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
+in:/usr/games"
+SCI="/usr/share/scilab"
+
+
+WINDOWS
+-------
+
+must include C:\Program Files (x86)\scilab-5.2.1\bin in the path
+
+and set the SCI enironment variable to C:\Program Files (x86)\scilab-5.2.1\
+
+
+TESTS
+=====
+
+To run the tests, the command:
+PYTHONPATH=build/lib.linux-x86_64-2.7/ python setup.py test
+should be launched.
+PYTHONPATH should be set if sciscipy is not installed in a system path.
+
+
+Coding style
+============
+
+The coding style is done through the command:
+astyle --pad-header --suffix=none --pad-oper --indent-col1-comments --indent-switches --indent=spaces=4 --add-brackets --formatted --style=bsd *.c

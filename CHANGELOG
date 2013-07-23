@@ -1,0 +1,23 @@
+sciscipy (1.0.0)
+
+     * Update of the documentation
+     * Clean up of the Python code (pylint rocks)
+     * Update the search of scilab.cfg:
+	- current directory
+	- ../../../share/sciscipy/scilab.cfg
+	- /usr/share/sciscipy/scilab.cfg (like before)
+     * Fix some C warnings
+
+ -- Sylvestre Ledru <sylvestre.ledru@scilab-enterprises.com>  Wed, 16 Jan 2013 12:16:58 +0100
+
+sciscipy (0.4.0)
+
+     * Update of the documentation
+     * Use call_scilab.h include instead of extern
+     * Match the declaration from Scilab 5.3.3 and upper
+     * Remove some dead code
+     * Add the --no-as-needed option to the linker
+     * Thanks to Luca DALL'OLIO for the various comments
+
+ -- Sylvestre Ledru <sylvestre.ledru@scilab-enterprises.com>  Sun, 30 Sep 2012 13:46:46 +0200
+
