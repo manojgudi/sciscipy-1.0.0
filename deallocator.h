@@ -2,6 +2,7 @@
 #define _DEALLOCATOR_H
 
 #include <Python.h>
+#include <api_common.h>
 
 #if NUMPY == 1
 #include <numpy/arrayobject.h>

@@ -6,7 +6,7 @@
 
 #include "call_scilab.h"
 #include "api_scilab.h"
-
+#include <api_common.h>
 #define BUFSIZE 1024
 
 #define TLIST_NAME	"__tlist_name"
