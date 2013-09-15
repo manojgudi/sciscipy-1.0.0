@@ -37,4 +37,4 @@ echo "$bold $red Setting up variables $end"
 echo "$bold $red Testing... $end"
 	CURRENT_PATH=`pwd`
 	export PYTHONPATH="$CURRENT_PATH/build/lib.linux-x86_64-2.7/"
-	python setup.py test
+	./setup.py test
