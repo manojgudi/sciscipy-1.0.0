@@ -21,7 +21,7 @@
 #define SCICONV_WRITE
 
 #include <Python.h>
-
+#include <api_common.h>
 #if NUMPY == 1
 #include "util.h"
 #include "numpy/arrayobject.h"
