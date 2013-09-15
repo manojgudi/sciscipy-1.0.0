@@ -1,0 +1,40 @@
+#/bin/bash
+
+bold=$(tput bold)
+red=$(tput setaf 1)
+yel=$(tput setaf 3)
+end=$(tput sgr 0)
+
+
+echo "$bold $red Installing Dependencies $end"
+
+echo "$bold $yel   > Installing Scilab... $end"
+	sudo apt-get install scilab
+
+echo "$bold $yel   > Installing python-numpy... $end"
+	sudo apt-get install python-numpy
+
+#echo "Installing python"
+echo "$bold $red Installing sciscipy $end"
+	./setup.py build
+
+# For Debian/Ubuntu based OSes
+sudo ./setup.py install --install-layout=deb
+
+echo "$bold $red Setting up variables $end"
+	s2pconf=/etc/ld.so.conf.d/sciscipy.conf
+	
+	echo "/usr/lib/scilab" >> $s2pconf
+	echo "/usr/lib/jvm/default-java/jre/lib/i386/native_threads" >> $s2pconf
+	echo "/usr/lib/jvm/default-java/jre/lib/i386/" >> $s2pconf
+	echo "/usr/lib/jvm-/efault-java/jre/lib/i386/server" >> $s2pconf
+
+	env=/etc/environment
+	echo 'PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games' >> env
+	echo 'SCI=/usr/share/scilab' >> env
+
+# Testing
+echo "$bold $red Testing... $end"
+	CURRENT_PATH=`pwd`
+	export PYTHONPATH="$CURRENT_PATH/build/lib.linux-x86_64-2.7/"
+	python setup.py test
