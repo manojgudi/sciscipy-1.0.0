@@ -24,15 +24,19 @@ sudo ./setup.py install --install-layout=deb
 echo "$bold $red Setting up variables $end"
 	s2pconf=/etc/ld.so.conf.d/sciscipy.conf
 	
-	echo "/usr/lib/scilab" >> $s2pconf
-	echo "/usr/lib/jvm/default-java/jre/lib/i386/native_threads" >> $s2pconf
-	echo "/usr/lib/jvm/default-java/jre/lib/i386/" >> $s2pconf
-	echo "/usr/lib/jvm-/efault-java/jre/lib/i386/server" >> $s2pconf
+	# Remove existing sciscipy.conf	
+	sudo rm $s2pconf
+
+	sudo bash -c "echo '/usr/lib/scilab' >> $s2pconf"
+	sudo bash -c "echo '/usr/lib/jvm/default-java/jre/lib/i386/native_threads' >> $s2pconf"
+	sudo bash -c "echo '/usr/lib/jvm/default-java/jre/lib/i386/' >> $s2pconf"
+	sudo bash -c "echo '/usr/lib/jvm-/efault-java/jre/lib/i386/server' >> $s2pconf"
 
 	env=/etc/environment
-	echo 'PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games' >> env
-	echo 'SCI=/usr/share/scilab' >> env
-
+	sudo bash -c "echo 'export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games' >> $env"
+	sudo bash -c "echo 'export SCI=/usr/share/scilab' >> $env"
+	sudo bash -c "echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/scilab:/usr/lib/jvm/java-6-openjdk-i386/jre/lib/i386/server/:/usr/lib/jvm/java-6-openjdk/jre/lib/i386/native_threads/:/usr/local/lib' >> $env"
+	source $env
 # Testing
 echo "$bold $red Testing... $end"
 	CURRENT_PATH=`pwd`
