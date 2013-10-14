@@ -5,6 +5,8 @@ red=$(tput setaf 1)
 yel=$(tput setaf 3)
 end=$(tput sgr 0)
 
+# Define Hardware platform
+platform=`uname -i`
 
 echo "$bold $red Installing Dependencies $end"
 
@@ -25,9 +27,9 @@ echo "$bold $red Setting up variables $end"
 	s2pconf=/etc/ld.so.conf.d/sciscipy.conf
 	
 	echo "/usr/lib/scilab" >> $s2pconf
-	echo "/usr/lib/jvm/default-java/jre/lib/i386/native_threads" >> $s2pconf
-	echo "/usr/lib/jvm/default-java/jre/lib/i386/" >> $s2pconf
-	echo "/usr/lib/jvm-/efault-java/jre/lib/i386/server" >> $s2pconf
+	echo "/usr/lib/jvm/default-java/jre/lib/$platform/native_threads" >> $s2pconf
+	echo "/usr/lib/jvm/default-java/jre/lib/$platform/" >> $s2pconf
+	echo "/usr/lib/jvm-/efault-java/jre/lib/$platform/server" >> $s2pconf
 
 	env=/etc/environment
 	echo 'PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games' >> env
