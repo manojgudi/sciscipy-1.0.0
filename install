@@ -8,6 +8,10 @@ end=$(tput sgr 0)
 # Define Hardware platform
 platform=`uname -i`
 
+if [$platform == "x86_64"] then
+platform="amd64"
+fi
+
 echo "$bold $red Installing Dependencies $end"
 
 echo "$bold $yel   > Installing Scilab... $end"
