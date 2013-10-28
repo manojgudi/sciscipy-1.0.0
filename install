@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 bold=$(tput bold)
 red=$(tput setaf 1)
@@ -8,9 +8,11 @@ end=$(tput sgr 0)
 # Define Hardware platform
 platform=`uname -i`
 
-if [$platform == "x86_64"] then
+# Checking platforms
+if [[ $platform == "x86_64" ]] then
 platform="amd64"
 fi
+
 
 echo "$bold $red Installing Dependencies $end"
 
