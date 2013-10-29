@@ -27,7 +27,7 @@ echo "$bold $red Installing sciscipy $end"
 	./setup.py build
 
 # For Debian/Ubuntu based OSes
-sudo ./setup.py install --install-layout=deb
+sudo ./setup.py install --install-layout=deb --record install_files.txt
 
 echo "$bold $red Setting up variables $end"
 	s2pconf=/etc/ld.so.conf.d/sciscipy.conf

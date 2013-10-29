@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Removed installed files..."
+cat install_files.txt | sudo xargs rm -rf
