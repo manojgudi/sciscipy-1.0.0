@@ -9,8 +9,11 @@ end=$(tput sgr 0)
 platform=`uname -i`
 
 # Checking platforms
-if [[ $platform == "x86_64" ]] then
+if [[ $platform == "x86_64" ]]; then
 platform="amd64"
+elif [[ $platform == "armv7l" ]]; then
+chipset="armv7l"
+platform="arm"
 fi
 
 
@@ -27,7 +30,7 @@ echo "$bold $red Installing sciscipy $end"
 	./setup.py build
 
 # For Debian/Ubuntu based OSes
-sudo ./setup.py install --install-layout=deb --record install_files.txt
+sudo ./setup.py install --install-layout=deb --record installed_files.txt
 
 echo "$bold $red Setting up variables $end"
 	s2pconf=/etc/ld.so.conf.d/sciscipy.conf
