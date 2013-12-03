@@ -22,6 +22,9 @@ echo "$bold $red Installing Dependencies $end"
 echo "$bold $yel   > Installing Scilab... $end"
 	sudo apt-get install scilab
 
+echo "$bold $yel   > Installing python-dev... $end"
+	sudo apt-get install python-dev
+
 echo "$bold $yel   > Installing python-numpy... $end"
 	sudo apt-get install python-numpy
 
