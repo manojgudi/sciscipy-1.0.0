@@ -44,7 +44,7 @@ echo "$bold $red Setting up variables $end"
 	sudo bash -c "echo '/usr/lib/scilab' >> $s2pconf"
 	sudo bash -c "echo '/usr/lib/jvm/default-java/jre/lib/$platform/native_threads' >> $s2pconf"
 	sudo bash -c "echo '/usr/lib/jvm/default-java/jre/lib/$platform/' >> $s2pconf"
-	sudo bash -c "echo '/usr/lib/jvm-/efault-java/jre/lib/$platform/server' >> $s2pconf"
+	sudo bash -c "echo '/usr/lib/jvm/default-java/jre/lib/$platform/server' >> $s2pconf"
 
 	env=/etc/environment
 	sudo bash -c "echo 'export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games' >> $env"
