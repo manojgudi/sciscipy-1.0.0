@@ -51,6 +51,12 @@ echo "$bold $red Setting up variables $end"
 	sudo bash -c "echo 'export SCI=/usr/share/scilab' >> $env"
 	sudo bash -c "echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/scilab:/usr/lib/jvm/java-6-openjdk-$platform/jre/lib/$platform/server/:/usr/lib/jvm/java-6-openjdk/jre/lib/$platform/native_threads/:/usr/local/lib' >> $env"
 	source $env
+
+# Appending bashrc to source /etc/environment
+echo "$bold $red Appending .bashrc to source /etc/environment file... $end"
+	bashrc=$HOME/.bashrc
+	echo "source /etc/environment" >> $bashrc
+
 # Testing
 echo "$bold $red Testing... $end"
 	CURRENT_PATH=`pwd`
