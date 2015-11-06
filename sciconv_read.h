@@ -24,7 +24,6 @@
 #define SCICONV_READ
 
 #include <Python.h>
-#include <api_common.h>
 
 #include "util.h"
 #if NUMPY == 1
